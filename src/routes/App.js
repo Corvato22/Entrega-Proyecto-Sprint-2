@@ -4,7 +4,6 @@ import {
     BrowserRouter as Router,
     Routes,
     // Route
-    // Carlos es el mejor
 }
     from 'react-router-dom';
     
