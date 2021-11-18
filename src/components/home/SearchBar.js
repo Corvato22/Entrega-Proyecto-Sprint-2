@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const SearchInput = styled.input` 
     width: 100%;
@@ -13,6 +11,7 @@ const SearchInput = styled.input`
     color: #FA4A0C;
     background-color: #E7E7E7;
     border: none;
+    margin-bottom: 40px;
 
         &::placeholder{
             color: #9A9A9D;
