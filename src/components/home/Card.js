@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Detail } from '../detail/Detail'
+import { Home } from './Home'
 
+const LinkStyled = styled(Link)`
+    text-decoration: none;
+`
 
 const ContainerCard = styled.div`
     display: flex;
@@ -22,6 +28,7 @@ const ContainerCard = styled.div`
     }
 
     h3 {
+        color: black;
         margin: 0;
     }
 
@@ -50,18 +57,20 @@ export const Card = () => {
         getData();
     })
 
-
     return (
         <div>
+            <Home />
             {
                 cards.map((data) => (
-                    <ContainerCard key={data.id}>
+                    <LinkStyled to={`/card/detail/${data.id}`} datos={data} key={data.id}>
+                    <ContainerCard>
                         <img src={data.image} alt={data.name} />
                         <div>
                             <h3>{data.flavor.nameflavor}</h3>
                             <p>{'$' + data.price} MXN</p>
                         </div>
                     </ContainerCard>
+                    </LinkStyled>
                 ))
             }
         </div>

@@ -1,8 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { useNavigate  } from 'react-router-dom'
 
 const HeaderContainer = styled.div`
     width: 100%;
@@ -11,9 +11,20 @@ const HeaderContainer = styled.div`
     align-items: center;
 `
 
-const LogoImage = styled.img`
-    width: 64px;
-    height: 64px;
+const ButtonGoBack = styled.button`
+    border: none;
+    background-color: #F2F2F2;
+`
+
+const GoBack = styled(FontAwesomeIcon)`
+    width: 24px !important; 
+    height: 24px; 
+    color: black; 
+    cursor: pointer;
+
+    &:hover:active {
+    transform:scale(.90);
+    }
 `
 
 const ShoppingCart = styled(FontAwesomeIcon)`
@@ -27,13 +38,16 @@ const ShoppingCart = styled(FontAwesomeIcon)`
     }
 `
 
-export const Header = () => {
+export const HeaderDetail = () => {
+
+    const navigate = useNavigate();
+
     return (
         <>
             <HeaderContainer>
-                <Link to='/'>
-                <LogoImage src="https://res.cloudinary.com/dzyyi4p7x/image/upload/v1636768072/Guappjolotes%20-%20Sprint%202/logo_bbdv3s.png" alt="Logo" />
-                </Link>
+                <ButtonGoBack onClick={() => navigate(-1)}>
+                    <GoBack icon={faChevronLeft} />
+                </ButtonGoBack>
                 <ShoppingCart icon={faShoppingCart} />
             </HeaderContainer>
         </>

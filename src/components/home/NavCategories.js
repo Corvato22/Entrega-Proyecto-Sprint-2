@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const NavStyled = styled.nav`
     display: flex;
@@ -9,7 +9,7 @@ const NavStyled = styled.nav`
     margin-bottom: 24px;
 `
 
-const LinkStyled = styled(Link)`
+const LinkStyled = styled(NavLink)`
     text-decoration: none;
     font-size: 17px;
     color: #9A9A9D;
@@ -21,23 +21,23 @@ const LinkStyled = styled(Link)`
 `
 
 export const NavCategories = () => {
-
+    
     return (
         <div>
             <div>
                 <NavStyled>
-                    <LinkStyled className="active" to={{
-                        pathname: "/Card",
+                    <LinkStyled to={{
+                        pathname: "/card",
                         search: "?category=guajolotas",
                     }}>Guajolotas</LinkStyled>
 
                     <LinkStyled to={{
-                        pathname: "/Card",
+                        pathname: "/card",
                         search: "?category=bebidas",
                     }}>Bebidas</LinkStyled>
 
                     <LinkStyled to={{
-                        pathname: "/Card",
+                        pathname: "/card",
                         search: "?category=tamales",
                     }}>Tamales</LinkStyled>
                 </NavStyled>
