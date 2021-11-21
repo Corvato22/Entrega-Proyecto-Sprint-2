@@ -1,0 +1,1 @@
+export const URL_DATABASE = 'https://db-productos-sprint-2.herokuapp.com/'

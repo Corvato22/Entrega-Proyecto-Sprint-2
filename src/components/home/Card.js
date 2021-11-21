@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Detail } from '../detail/Detail'
+import { URL_DATABASE } from '../../helpers/URL'
 import { Home } from './Home'
+
 
 const LinkStyled = styled(Link)`
     text-decoration: none;
@@ -43,26 +44,27 @@ export const Card = () => {
 
     const endPoint = window.location.search.match(/=([A-Za-z]*)/)[1]  //* Obtener categoria mediante una regex descompuesta desde el "=" usando un queryparam
 
-    const url = ('https://db-productos-sprint-2.herokuapp.com/' + endPoint)
+    const DATABASE = (URL_DATABASE + endPoint)
 
     const [cards, setCards] = useState([])
 
     const getData = async () => {
-        let resp = await fetch(url)
+        let resp = await fetch(DATABASE)
         let data = await resp.json()
         setCards(data)
     }
 
     useEffect(() => {
         getData();
-    })
-
+        // eslint-disable-next-line
+    },[])
+    
     return (
         <div>
             <Home />
             {
                 cards.map((data) => (
-                    <LinkStyled to={`/card/detail/${data.id}`} datos={data} key={data.id}>
+                    <LinkStyled to={`/card/detail/${endPoint}/${data.id}`} key={data.id}>
                     <ContainerCard>
                         <img src={data.image} alt={data.name} />
                         <div>
