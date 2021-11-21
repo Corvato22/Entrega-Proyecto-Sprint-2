@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { URL_DATABASE } from '../../helpers/URL'
 import { HeaderDetail } from '../home/HeaderDetail'
 import { FlavorDetail } from './FlavorDetail'
+import { QuantityDetail } from './QuantityDetail'
 
 const ContainerImgDetail = styled.div`
     display: flex;
@@ -40,11 +41,7 @@ const ContainerImgDetail = styled.div`
 export const Detail = () => {
 
     const [productDetail, setProductDetail] = useState([])
-
-    useEffect(() => {
-        getDataBase()
-        // eslint-disable-next-line
-    }, [])
+    const [productFlavor, setProductFlavor] = useState([])
 
     const paramsId = useParams()
     const { id } = paramsId
@@ -57,9 +54,13 @@ export const Detail = () => {
         let data = await resp.json()
         let selectProduct = data.find(data => data.id === id)
         setProductDetail(selectProduct)
+        setProductFlavor(data)
     }
 
-    console.log(productDetail)
+    useEffect(() => {
+        getDataBase()
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div>
@@ -71,7 +72,8 @@ export const Detail = () => {
                     <p>{'$' + productDetail.price} MXN</p>
                 </div>
             </ContainerImgDetail>
-            <FlavorDetail />
+            <QuantityDetail />
+            <FlavorDetail productFlavor={productFlavor} />
         </div>
     )
 }
