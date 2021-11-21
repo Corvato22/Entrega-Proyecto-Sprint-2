@@ -24,6 +24,10 @@ const QuantityDetailContainer = styled.div`
     span{
         border: solid 4px black;
         border-radius: 50%;
+
+        &:hover:active {
+            transform:scale(.90);
+        }
     }
 
     p{

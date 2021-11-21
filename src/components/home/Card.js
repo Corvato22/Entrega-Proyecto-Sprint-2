@@ -16,6 +16,10 @@ const ContainerCard = styled.div`
     padding: 16px;
     margin-bottom: 8px;
 
+    &:hover:active {
+        transform:scale(.95);
+    }
+
     img {
         width: 80px;
         height: 80px;
