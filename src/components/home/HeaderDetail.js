@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { useNavigate  } from 'react-router-dom'
 
 const HeaderContainer = styled.div`
     width: 100%;
@@ -11,7 +11,7 @@ const HeaderContainer = styled.div`
     align-items: center;
 `
 
-const ButtonGoBack = styled(Link)`
+const ButtonGoBack = styled.button`
     border: none;
     background-color: #F2F2F2;
 `
@@ -40,10 +40,12 @@ const ShoppingCart = styled(FontAwesomeIcon)`
 
 export const HeaderDetail = () => {
 
+    const navigate = useNavigate();
+
     return (
         <>
             <HeaderContainer>
-                <ButtonGoBack to='/' >
+                <ButtonGoBack onClick={() => navigate(-1)}>
                     <GoBack icon={faChevronLeft} />
                 </ButtonGoBack>
                 <ShoppingCart icon={faShoppingCart} />

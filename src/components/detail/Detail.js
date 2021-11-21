@@ -50,10 +50,10 @@ export const Detail = () => {
     const { id } = paramsId
 
     const paramsCategory = useParams()
-    const { endpoint } = paramsCategory
+    const { endPoint } = paramsCategory
 
     const getDataBase = async () => {
-        let resp = await fetch(URL_DATABASE + endpoint)
+        let resp = await fetch(URL_DATABASE + endPoint)
         let data = await resp.json()
         let selectProduct = data.find(data => data.id === id)
         setProductDetail(selectProduct)

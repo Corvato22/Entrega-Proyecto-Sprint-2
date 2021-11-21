@@ -27,18 +27,18 @@ export const NavCategories = () => {
             <div>
                 <NavStyled>
                     <LinkStyled to={{
-                        pathname: "/card",
-                        search: "?category=guajolotas",
+                        pathname: "/card/guajolotas",
+                        // search: "/category=guajolotas",
                     }}>Guajolotas</LinkStyled>
 
                     <LinkStyled to={{
-                        pathname: "/card",
-                        search: "?category=bebidas",
+                        pathname: "/card/bebidas",
+                        // search: "?category=bebidas",
                     }}>Bebidas</LinkStyled>
 
                     <LinkStyled to={{
-                        pathname: "/card",
-                        search: "?category=tamales",
+                        pathname: "/card/tamales",
+                        // search: "?category=tamales",
                     }}>Tamales</LinkStyled>
                 </NavStyled>
             </div>

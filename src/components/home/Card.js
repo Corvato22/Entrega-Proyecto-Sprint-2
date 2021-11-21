@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { URL_DATABASE } from '../../helpers/URL'
 import { Home } from './Home'
-
 
 const LinkStyled = styled(Link)`
     text-decoration: none;
@@ -42,29 +42,32 @@ const ContainerCard = styled.div`
 
 export const Card = () => {
 
-    const endPoint = window.location.search.match(/=([A-Za-z]*)/)[1]  //* Obtener categoria mediante una regex descompuesta desde el "=" usando un queryparam
-
-    const DATABASE = (URL_DATABASE + endPoint)
-
+    // const endPoint = window.location.search.match(/=([A-Za-z]*)/)[1]  //* Obtener categoria mediante una regex descompuesta desde el "=" usando un queryparam
+    
     const [cards, setCards] = useState([])
 
+    const paramsCategory = useParams()
+    const { endPoint } = paramsCategory
+
+    const URL_DATABASE_DETAIL = (URL_DATABASE + endPoint)
+    
     const getData = async () => {
-        let resp = await fetch(DATABASE)
+        let resp = await fetch(URL_DATABASE_DETAIL)
         let data = await resp.json()
         setCards(data)
     }
 
     useEffect(() => {
-        getData();
+        getData()
         // eslint-disable-next-line
-    },[])
-    
+    }, [endPoint])
+
     return (
         <div>
             <Home />
             {
                 cards.map((data) => (
-                    <LinkStyled to={`/card/detail/${endPoint}/${data.id}`} key={data.id}>
+                    <LinkStyled to={`/detail/${endPoint}/${data.id}`} key={data.id}>
                     <ContainerCard>
                         <img src={data.image} alt={data.name} />
                         <div>
