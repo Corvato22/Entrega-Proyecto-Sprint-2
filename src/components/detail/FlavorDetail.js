@@ -14,6 +14,10 @@ const FlavorDetailContainer = styled.div`
         width: 64px;
         height: 69px;
         margin: 15px;
+
+            &:hover:active {
+                transform: scale(.90);
+            }
     }
 
     div{

@@ -47,16 +47,14 @@ const ContainerCard = styled.div`
 export const Card = () => {
 
     // const endPoint = window.location.search.match(/=([A-Za-z]*)/)[1]  //* Obtener categoria mediante una regex descompuesta desde el "=" usando un queryparam
-    
+
     const [cards, setCards] = useState([])
 
     const paramsCategory = useParams()
     const { endPoint } = paramsCategory
 
-    const URL_DATABASE_DETAIL = (URL_DATABASE + endPoint)
-    
     const getData = async () => {
-        let resp = await fetch(URL_DATABASE_DETAIL)
+        let resp = await fetch(URL_DATABASE + endPoint)
         let data = await resp.json()
         setCards(data)
     }
@@ -72,13 +70,13 @@ export const Card = () => {
             {
                 cards.map((data) => (
                     <LinkStyled to={`/detail/${endPoint}/${data.id}`} key={data.id}>
-                    <ContainerCard>
-                        <img src={data.image} alt={data.name} />
-                        <div>
-                            <h3>{data.flavor.nameflavor}</h3>
-                            <p>{'$' + data.price} MXN</p>
-                        </div>
-                    </ContainerCard>
+                        <ContainerCard>
+                            <img src={data.image} alt={data.name} />
+                            <div>
+                                <h3>{data.flavor.nameflavor}</h3>
+                                <p>{'$' + data.price} MXN</p>
+                            </div>
+                        </ContainerCard>
                     </LinkStyled>
                 ))
             }
