@@ -25,7 +25,7 @@ export const AddToCartButton = ({ totalProducts }) => {
 
     return (
         <ContainerAddButton>
-            <button>Agregar {totalProducts + 1} al carrito  </button>  {/*El estado no se actualiza lo que provoca que el siempre se esté un paso atrás del contador, se le suma para compensar desfase*/}
+            <button>Agregar {totalProducts} al carrito  </button>  {/*El estado no se actualiza lo que provoca que el siempre se esté un paso atrás del contador, se le suma para compensar desfase*/}
         </ContainerAddButton>
     )
 }
