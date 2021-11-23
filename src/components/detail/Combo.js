@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { URL_DATABASE } from '../../helpers/URL'
+import appContext from '../../context/AppContext'
 
 const ComboDetailContainer = styled.div`
     margin-top: 40px;
@@ -67,12 +68,15 @@ const CardContainer = styled.div`
 
 export const Combo = ({ endPoint }) => {
 
+    const AppContext = useContext(appContext)
+    let { AddCounter } = AppContext
+
     let endPointCombo
     let comboProduct
 
     endPoint === "guajolotas" || endPoint === "tamales" ?
-    (endPointCombo = "bebidas") && (comboProduct = "bebida") :
-    (endPointCombo = "guajolotas") && (comboProduct = "torta")
+        (endPointCombo = "bebidas") && (comboProduct = "bebida") :
+        (endPointCombo = "guajolotas") && (comboProduct = "torta")
 
     const [cards, setCards] = useState([])
 
@@ -100,7 +104,7 @@ export const Combo = ({ endPoint }) => {
                                 <h3>{data.flavor.nameflavor}</h3>
                                 <p>{'+ $' + data.price} MXN</p>
                             </div>
-                            <input type="checkbox" />
+                            <input onClick={AddCounter} type="checkbox" />    {/*Corregir que si agrega si se checkea o no*/}
                         </CardContainer>
                     ))
                 }

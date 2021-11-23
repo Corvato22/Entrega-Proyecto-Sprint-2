@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+
+import appContext from '../../context/AppContext'
 
 const QuantityDetailContainer = styled.div`
     display: flex;
@@ -48,26 +50,29 @@ const QuantityDetailButtons = styled(FontAwesomeIcon)`
         cursor: pointer;
 `
 
-export const QuantityDetail = ({ sendDataToParent }) => {     //* Obtiene la data del estado del componente hijo desde el padre
+export const QuantityDetail = () => {     //* Obtiene la data del estado del componente hijo desde el padre
 
-    const [counter, setCounter] = useState(1)
+    const AppContext = useContext(appContext)
+    
+    let { AddCounter, totalProducts, SubstractCounter } = AppContext
 
     let opacityButton
 
-    counter === 1 ? opacityButton = "active" : opacityButton = ""
+    totalProducts === 1 ? opacityButton = "active" : opacityButton = ""
 
-    const add = () => setCounter(counter + 1)
-    const noAdd = () => counter <= 1 ? setCounter(1) : setCounter(counter - 1)
+    // const [counter, setCounter] = useState(1)
+    // const add = () => setCounter(counter + 1)
+    // const noAdd = () => counter <= 1 ? setCounter(1) : setCounter(counter - 1)
 
     return (
         <QuantityDetailContainer>
             <div>
                 <span className={opacityButton}>
-                    <QuantityDetailButtons className={opacityButton} onClick={() => { sendDataToParent(counter); noAdd()}} icon={faMinus} />  {/* Con el estado mandado como "prop" actualiza segun el estado counter y devuelve al parent*/}
+                    <QuantityDetailButtons className={opacityButton} onClick={() => { SubstractCounter() }} icon={faMinus} />  {/* Con el estado mandado como "prop" actualiza segun el estado counter y devuelve al parent*/}
                 </span>
-                <p>{counter}</p>
+                <p>{totalProducts}</p>
                 <span>
-                    <QuantityDetailButtons onClick={() => { sendDataToParent(counter); add()}} icon={faPlus} />
+                    <QuantityDetailButtons onClick={() => { AddCounter() }} icon={faPlus} />
                 </span>
             </div>
         </QuantityDetailContainer>

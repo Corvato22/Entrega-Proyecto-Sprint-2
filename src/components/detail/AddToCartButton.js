@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import appContext from '../../context/AppContext'
 
 const ContainerAddButton = styled.div`
     display: flex;
@@ -21,7 +22,10 @@ const ContainerAddButton = styled.div`
     }
 `
 
-export const AddToCartButton = ({ totalProducts }) => {
+export const AddToCartButton = () => {
+
+    const AppContext = useContext(appContext)
+    let { totalProducts } = AppContext
 
     return (
         <ContainerAddButton>
