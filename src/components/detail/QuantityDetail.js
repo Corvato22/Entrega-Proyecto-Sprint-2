@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
@@ -54,23 +54,18 @@ export const QuantityDetail = ({ productDetail }) => {     //* Obtiene la data d
 
     const AppContext = useContext(appContext)
 
-    let { AddCounter, totalProducts, SubstractCounter, AddToCart, SubstracToCart, shoppingCart } = AppContext
+    let { AddCounter, totalProducts, SubstractCounter, AddToCart, SubstracToCart } = AppContext
 
     console.log("Objeto selecccionanod", productDetail)
 
 
     const AddProductToCart = () => {
-        // let newCart = [...shoppingCart]             //* Clona el array del estado inicial del carrito para que no se afecte al pushear el objeto agregado.
         AddCounter();
-        // newCart.push(productDetail)
         AddToCart(productDetail)
     }
 
     const SubstractProductFromCart = () => {
-        // let newCart = [...shoppingCart]             //* Clona el array del estado inicial del carrito para que no se afecte al pushear el objeto agregado.
         SubstractCounter();
-        // let indexFound = newCart.findIndex((element) => element.id === productDetail.id)  //*Encuentra el índice de lo que hay que sacar  // Return implicito
-        // newCart = newCart.filter((element, index) => index === indexFound)                          //* Filtra el array quitando el índice encontrado
         SubstracToCart(productDetail)
     }
 
@@ -78,7 +73,7 @@ export const QuantityDetail = ({ productDetail }) => {     //* Obtiene la data d
 
     totalProducts === 1 ? opacityButton = "active" : opacityButton = ""
 
-    // const [counter, setCounter] = useState(1)
+    // const [counter, setCounter] = useState(1)            //* Logica anterior del counter
     // const add = () => setCounter(counter + 1)
     // const noAdd = () => counter <= 1 ? setCounter(1) : setCounter(counter - 1)
 
