@@ -49,6 +49,7 @@ export const Detail = () => {
     const [productDetail, setProductDetail] = useState([])
     const [productFlavor, setProductFlavor] = useState([])
     const [flavor, setFlavor] = useState(params.id)
+
     const AppContext = useContext(appContext)
     let { totalProducts } = AppContext
 
@@ -63,9 +64,11 @@ export const Detail = () => {
     //     // eslint-disable-next-line
     // }, [totalProducts])
     
-    console.log("Trae la data del producto seleccionado",productDetail)
-    console.log("Trae la endPoint y el id del sabor del producto seleccionado", flavor)
-    console.log("Muestra que tiene el useParams", useParams())
+
+
+    // console.log("Trae la data del producto seleccionado",productDetail)
+    // console.log("Trae la endPoint y el id del sabor del producto seleccionado", flavor)
+    // console.log("Muestra que tiene el useParams", useParams())
 
     const getData = async () => {
         let resp = await fetch(URL_DATABASE + params.endPoint)
@@ -75,6 +78,8 @@ export const Detail = () => {
         setProductFlavor(data)
     }
 
+    console.log(productDetail)
+    
     function changeFlavor(newProduct) {
         setFlavor(newProduct)
     }

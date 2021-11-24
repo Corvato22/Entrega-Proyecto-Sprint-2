@@ -69,7 +69,7 @@ const CardContainer = styled.div`
 export const Combo = ({ endPoint }) => {
 
     const AppContext = useContext(appContext)
-    let { AddCounter } = AppContext
+    let { AddCombo, SubstractCombo } = AppContext
 
     let endPointCombo
     let comboProduct
@@ -84,6 +84,15 @@ export const Combo = ({ endPoint }) => {
         let resp = await fetch(URL_DATABASE + endPointCombo)
         let data = await resp.json()
         setCards(data)
+    }
+
+    function changeCombo(e) {
+        let combo = e.target.checked
+        console.log("Que putas es combo", combo)
+        console.log("Que putas es e", e)
+        if (combo !== undefined) {                        //* Verifica si el checkbox no está inderterminado, es una buena practica para prevenir un error (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-indeterminate)
+            combo ? AddCombo() : SubstractCombo()         //* En este operador ternario combo ya vienen como boolean, entonces la declaración del operador es solor "combo"
+        }
     }
 
     useEffect(() => {
@@ -104,7 +113,7 @@ export const Combo = ({ endPoint }) => {
                                 <h3>{data.flavor.nameflavor}</h3>
                                 <p>{'+ $' + data.price} MXN</p>
                             </div>
-                            <input onClick={AddCounter} type="checkbox" />    {/*Corregir que si agrega si se checkea o no*/}
+                            <input onChange={changeCombo} type="checkbox" />    {/*Corregir que si agrega si se checkea o no*/}
                         </CardContainer>
                     ))
                 }

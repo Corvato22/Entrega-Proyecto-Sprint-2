@@ -4,7 +4,8 @@ import './App.css';
 import {
     BrowserRouter as Router,
     Routes,
-    Route
+    Route,
+    Navigate
 }
     from 'react-router-dom';
     
@@ -21,6 +22,7 @@ export const App = () => {
                         <Route exact path="/" element={<Home />} />
                         <Route exact path="/card/:endPoint/" element={<Card />} />
                         <Route exact path="/detail/:endPoint/:id" element={<Detail />} />
+                        <Route path="*" element={<Navigate to= "/" />} />
                     </Routes>
                 </Router>
             </div>

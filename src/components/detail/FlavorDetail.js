@@ -43,7 +43,6 @@ const FlavorDetailContainer = styled.div`
 export const FlavorDetail = ({ productFlavor, changeFlavor, endPoint }) => {
 
 
-    //* Quizás se pueda arreglar lo del la opacidad con un NavLink
     return (
         <FlavorDetailContainer>
             <h2>Sabor</h2>
