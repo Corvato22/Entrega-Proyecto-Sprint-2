@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
@@ -50,11 +50,29 @@ const QuantityDetailButtons = styled(FontAwesomeIcon)`
         cursor: pointer;
 `
 
-export const QuantityDetail = () => {     //* Obtiene la data del estado del componente hijo desde el padre
+export const QuantityDetail = ({ productDetail }) => {     //* Obtiene la data del estado del componente hijo desde el padre
 
     const AppContext = useContext(appContext)
-    
-    let { AddCounter, totalProducts, SubstractCounter } = AppContext
+
+    let { AddCounter, totalProducts, SubstractCounter, AddToCart, SubstracToCart, shoppingCart } = AppContext
+
+    console.log("Objeto selecccionanod", productDetail)
+
+
+    const AddProductToCart = () => {
+        // let newCart = [...shoppingCart]             //* Clona el array del estado inicial del carrito para que no se afecte al pushear el objeto agregado.
+        AddCounter();
+        // newCart.push(productDetail)
+        AddToCart(productDetail)
+    }
+
+    const SubstractProductFromCart = () => {
+        // let newCart = [...shoppingCart]             //* Clona el array del estado inicial del carrito para que no se afecte al pushear el objeto agregado.
+        SubstractCounter();
+        // let indexFound = newCart.findIndex((element) => element.id === productDetail.id)  //*Encuentra el índice de lo que hay que sacar  // Return implicito
+        // newCart = newCart.filter((element, index) => index === indexFound)                          //* Filtra el array quitando el índice encontrado
+        SubstracToCart(productDetail)
+    }
 
     let opacityButton
 
@@ -68,11 +86,11 @@ export const QuantityDetail = () => {     //* Obtiene la data del estado del com
         <QuantityDetailContainer>
             <div>
                 <span className={opacityButton}>
-                    <QuantityDetailButtons className={opacityButton} onClick={() => { SubstractCounter() }} icon={faMinus} />  {/* Con el estado mandado como "prop" actualiza segun el estado counter y devuelve al parent*/}
+                    <QuantityDetailButtons className={opacityButton} onClick={() => { SubstractProductFromCart() }} icon={faMinus} />  {/* Con el estado mandado como "prop" actualiza segun el estado counter y devuelve al parent*/}
                 </span>
                 <p>{totalProducts}</p>
                 <span>
-                    <QuantityDetailButtons onClick={() => { AddCounter() }} icon={faPlus} />
+                    <QuantityDetailButtons onClick={() => { AddProductToCart() }} icon={faPlus} />
                 </span>
             </div>
         </QuantityDetailContainer>

@@ -38,14 +38,14 @@ const AppState = ({ children }) => {
             type: SUBSTRACT_COMBO
         })
     }
-    const AddToCart = () => {
+    const AddToCart = (product) => {
         dispatch({
-            type: ADD_TO_CART
+            type: ADD_TO_CART, payload: product
         })
     }
-    const SubstracToCart = () => {
+    const SubstracToCart = (product) => {
         dispatch({
-            type: SUBSTRACT_TO_CART
+            type: SUBSTRACT_TO_CART, payload: product
         })
     }
 

@@ -25,14 +25,16 @@ const ContainerAddButton = styled.div`
 export const AddToCartButton = () => {
 
     const AppContext = useContext(appContext)
-    let { totalProducts, comboTotalProducts } = AppContext
+    let { shoppingCart } = AppContext
+
+    console.log("Estado shoppingCart", shoppingCart)
 
     // console.log("totalProducts",totalProducts)
     // console.log("totalComboProducts", comboTotalProducts)
 
     return (
         <ContainerAddButton>
-            <button>Agregar {totalProducts + comboTotalProducts} al carrito  </button>  {/*El estado no se actualiza lo que provoca que el siempre se esté un paso atrás del contador, se le suma para compensar desfase*/}
+            <button>Agregar {shoppingCart.length} al carrito  </button>  {/*El estado no se actualiza lo que provoca que el siempre se esté un paso atrás del contador, se le suma para compensar desfase*/}
         </ContainerAddButton>
     )
 }

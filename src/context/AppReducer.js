@@ -24,14 +24,19 @@ const appReducer = (state, action) => {
                 comboTotalProducts: (state.comboTotalProducts - 1) < 0 ? 0 : state.comboTotalProducts - 1
             }
         case ADD_TO_CART:
+            let newCart = [...state.shoppingCart]
+            newCart.push(action.payload)
             return {
                 ...state,
-                shoppingCart: state.shoppingCart
+                shoppingCart: newCart
             }
         case SUBSTRACT_TO_CART:
+            let newCart2 = [...state.shoppingCart]
+            let indexFound = newCart2.findIndex((element) => element.id === action.payload.id)  //*Encuentra el índice de lo que hay que sacar  // Return implicito
+            newCart2 = newCart2.filter((element, index) => index !== indexFound) //no me saque ninguno que sea diferente al indice encontrado
             return {
                 ...state,
-                shoppingCart: state.shoppingCart
+                shoppingCart: newCart2
             }
         default: {
             return state

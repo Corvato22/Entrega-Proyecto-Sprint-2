@@ -46,12 +46,12 @@ export const Detail = () => {
 
     const params = useParams()
 
-    const [productDetail, setProductDetail] = useState([])
+    const [productDetail, setProductDetail] = useState({}) //* corregido para que sea un objeto, antes un array
     const [productFlavor, setProductFlavor] = useState([])
     const [flavor, setFlavor] = useState(params.id)
 
     const AppContext = useContext(appContext)
-    let { totalProducts } = AppContext
+    let { totalProducts, AddToCart } = AppContext
 
     // const [totalProducts, setTotalProducts] = useState(1)     //* Obtiene la data del estado del componente hijo
     // const sendDataToParent = (index) => {  
@@ -64,7 +64,6 @@ export const Detail = () => {
     //     // eslint-disable-next-line
     // }, [totalProducts])
     
-
 
     // console.log("Trae la data del producto seleccionado",productDetail)
     // console.log("Trae la endPoint y el id del sabor del producto seleccionado", flavor)
@@ -89,6 +88,13 @@ export const Detail = () => {
         // eslint-disable-next-line
     }, [flavor])
 
+    useEffect(() => {
+        if (Object.keys(productDetail).length) {        //*crea un array con las llaves del objeto y valida su longitud, si length vale 0, de por si es falso. por eso no se compara con una cantidad
+                AddToCart(productDetail)
+            }
+        // eslint-disable-next-line
+    }, [productDetail])
+
     return (
         <div>
             <HeaderDetail />
@@ -103,7 +109,7 @@ export const Detail = () => {
                     }
                 </div>
             </ContainerImgDetail>
-            <QuantityDetail />    {/* Uso de useContext para actualizar el contador*/}
+            <QuantityDetail productDetail={productDetail}  />    {/* Uso de useContext para actualizar el contador*/}
             <FlavorDetail endPoint={params.endPoint} changeFlavor={changeFlavor} productFlavor={productFlavor} />
             <Combo endPoint={params.endPoint} />
             <AddToCartButton totalProducts={totalProducts} />         {/*Manda estado por prop al componente hijo*/}
