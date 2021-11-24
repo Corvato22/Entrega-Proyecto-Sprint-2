@@ -69,7 +69,7 @@ const CardContainer = styled.div`
 export const Combo = ({ endPoint }) => {
 
     const AppContext = useContext(appContext)
-    let { AddCombo, SubstractCombo } = AppContext
+    let { AddToCart, SubstracToCart } = AppContext
 
     let endPointCombo
     let comboProduct
@@ -86,13 +86,13 @@ export const Combo = ({ endPoint }) => {
         setCards(data)
     }
 
-    function changeCombo(e) {
-        let combo = e.target.checked
-        console.log("Que putas es combo", combo)
-        console.log("Que putas es e", e)
-        if (combo !== undefined) {                        //* Verifica si el checkbox no está inderterminado, es una buena practica para prevenir un error (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-indeterminate)
-            combo ? AddCombo() : SubstractCombo()         //* En este operador ternario combo ya vienen como boolean, entonces la declaración del operador es solor "combo"
-        }
+    function changeCombo(data) {                          //TODO capturar el id y el evento check para añadir el objeto al carrito
+        // let combo = e.target.classname
+        // console.log("Que putas es combo", combo)
+        console.log("Que putas es data", data)
+        // if (combo !== undefined) {                        //* Verifica si el checkbox no está inderterminado, es una buena practica para prevenir un error (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-indeterminate)
+        //     combo ? AddToCart() : SubstracToCart()         //* En este operador ternario combo ya vienen como boolean, entonces la declaración del operador es solor "combo"
+        // }
     }
 
     useEffect(() => {
@@ -113,7 +113,7 @@ export const Combo = ({ endPoint }) => {
                                 <h3>{data.flavor.nameflavor}</h3>
                                 <p>{'+ $' + data.price} MXN</p>
                             </div>
-                            <input onChange={changeCombo} type="checkbox" />    {/*Corregir que si agrega si se checkea o no*/}
+                            <input onChange={changeCombo(data)} type="checkbox" />    {/*Corregir que si agrega si se checkea o no*/}
                         </CardContainer>
                     ))
                 }

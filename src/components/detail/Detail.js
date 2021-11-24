@@ -51,7 +51,7 @@ export const Detail = () => {
     const [flavor, setFlavor] = useState(params.id)
 
     const AppContext = useContext(appContext)
-    let { totalProducts, AddToCart } = AppContext
+    let { totalProducts } = AppContext
 
     // const [totalProducts, setTotalProducts] = useState(1)     //* Obtiene la data del estado del componente hijo
     // const sendDataToParent = (index) => {  
@@ -87,13 +87,6 @@ export const Detail = () => {
         getData()
         // eslint-disable-next-line
     }, [flavor])
-
-    useEffect(() => {
-        if (Object.keys(productDetail).length) {        //*crea un array con las llaves del objeto y valida su longitud, si length vale 0, de por si es falso. por eso no se compara con una cantidad
-                AddToCart(productDetail)
-            }
-        // eslint-disable-next-line
-    }, [productDetail])
 
     return (
         <div>
