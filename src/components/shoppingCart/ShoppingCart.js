@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import appContext from '../../context/AppContext'
+import { URL_SHOPPING_CART } from '../../helpers/URL'
+
 import { HeaderShoppingCart } from './HeaderShoppingCart'
 
 const StyledCartContainer = styled.div`
@@ -18,19 +19,38 @@ const StyledCartContainer = styled.div`
 
 export const ShoppingCart = () => {
 
-    const AppContext = useContext(appContext)
-    let { shoppingCart } = AppContext
+    const [cardsShoppingCart, setCardsShoppingCart] = useState([])
 
-    console.log(shoppingCart)
+    const getData = async () => {
+        let resp = await fetch(URL_SHOPPING_CART)
+        let data = await resp.json()
+        setCardsShoppingCart(data)
+    }
 
+    useEffect(() => {
+        getData()
+        // eslint-disable-next-line
+    }, [])
+
+    console.log(cardsShoppingCart[0].products)
 
     return (
         <div>
             <HeaderShoppingCart />
             <StyledCartContainer>
                 {
-                    shoppingCart.length === 0 ?
-                        <img src="https://res.cloudinary.com/dzyyi4p7x/image/upload/v1637806696/Guappjolotes%20-%20Sprint%202/NoProducts_a8jouv.png" alt="Empty Cart" /> : <h3>Hola</h3>
+                    cardsShoppingCart.length === 0 ?
+                        <img src="https://res.cloudinary.com/dzyyi4p7x/image/upload/v1637806696/Guappjolotes%20-%20Sprint%202/NoProducts_a8jouv.png" alt="Empty Cart" />
+                        : cardsShoppingCart[0].products.map((data) => (
+                            <div>
+                                <img src={data.image} alt={data.name} />
+                                <div>
+                                    <h3>{data.name}</h3>
+                                    <h3>x1</h3>
+                                </div>
+                                <p>{'$' + data.price} MXN</p>
+                            </div>
+                        ))
                 }
             </StyledCartContainer>
         </div>
