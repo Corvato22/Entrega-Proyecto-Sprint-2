@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const HeaderContainer = styled.div`
     width: 100%;
@@ -30,8 +31,12 @@ export const Header = () => {
     return (
         <>
             <HeaderContainer>
-                <LogoImage src="https://res.cloudinary.com/dzyyi4p7x/image/upload/v1636768072/Guappjolotes%20-%20Sprint%202/logo_bbdv3s.png" alt="Logo" />
-                <ShoppingCart icon={faShoppingCart} />
+                <Link to='/card/guajolotas'>
+                    <LogoImage src="https://res.cloudinary.com/dzyyi4p7x/image/upload/v1636768072/Guappjolotes%20-%20Sprint%202/logo_bbdv3s.png" alt="Logo" />
+                </Link>
+                <Link to='/shoppingCart'>
+                    <ShoppingCart icon={faShoppingCart} />
+                </Link>
             </HeaderContainer>
         </>
     )
