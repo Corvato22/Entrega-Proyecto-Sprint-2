@@ -32,9 +32,11 @@ export const Header = () => {
         <>
             <HeaderContainer>
                 <Link to='/card/guajolotas'>
-                <LogoImage src="https://res.cloudinary.com/dzyyi4p7x/image/upload/v1636768072/Guappjolotes%20-%20Sprint%202/logo_bbdv3s.png" alt="Logo" />
+                    <LogoImage src="https://res.cloudinary.com/dzyyi4p7x/image/upload/v1636768072/Guappjolotes%20-%20Sprint%202/logo_bbdv3s.png" alt="Logo" />
                 </Link>
-                <ShoppingCart icon={faShoppingCart} />
+                <Link to='/shoppingCart'>
+                    <ShoppingCart icon={faShoppingCart} />
+                </Link>
             </HeaderContainer>
         </>
     )

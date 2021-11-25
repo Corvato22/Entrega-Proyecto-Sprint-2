@@ -52,7 +52,9 @@ export const HeaderDetail = () => {
                 <ButtonGoBack to='/card/guajolotas'>
                     <GoBack icon={faChevronLeft} />
                 </ButtonGoBack>
-                <ShoppingCart icon={faShoppingCart} />
+                <Link to='/shoppingCart'>
+                    <ShoppingCart icon={faShoppingCart} />
+                </Link>
             </HeaderContainer>
         </>
     )

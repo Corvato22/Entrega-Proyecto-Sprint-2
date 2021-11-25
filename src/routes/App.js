@@ -12,6 +12,7 @@ import {
 import { Home } from '../components/home/Home';
 import { Card } from '../components/home/Card';
 import { Detail } from '../components/detail/Detail';
+import { ShoppingCart } from '../components/shoppingCart/ShoppingCart';
 
 export const App = () => {
     return (
@@ -22,6 +23,7 @@ export const App = () => {
                         <Route exact path="/" element={<Home />} />
                         <Route exact path="/card/:endPoint/" element={<Card />} />
                         <Route exact path="/detail/:endPoint/:id" element={<Detail />} />
+                        <Route exact path="/shoppingCart" element={<ShoppingCart />} />
                         <Route path="*" element={<Navigate to= "/" />} />
                     </Routes>
                 </Router>

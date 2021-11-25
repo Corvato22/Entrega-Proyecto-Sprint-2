@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import appContext from '../../context/AppContext'
+import { URL_SHOPPING_CART } from '../../helpers/URL'
 
 const ContainerAddButton = styled.div`
     display: flex;
@@ -29,12 +30,25 @@ export const AddToCartButton = () => {
 
     console.log("Estado shoppingCart", shoppingCart)
 
+    const postProducts = async () => {
+        await fetch(URL_SHOPPING_CART, {
+            method: 'POST',
+            body: JSON.stringify({
+                products: shoppingCart
+            }),
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }
+        })
+        window.location.reload(true);
+    }
+
     // console.log("totalProducts",totalProducts)
     // console.log("totalComboProducts", comboTotalProducts)
 
     return (
         <ContainerAddButton>
-            <button>Agregar {shoppingCart.length} al carrito  </button>  {/*El estado no se actualizaba lo que provoca que el siempre se esté un paso atrás del contador, se le sumaba para compensar desfase*/}
+            <button onClick={() => postProducts()}>Agregar {shoppingCart.length} al carrito $ {shoppingCart.reduce((acc, elem) => acc + elem.price, 0)} </button>  {/*El Reduce permite ejecuta una función que permite aplicar operaciones sobre elementos de un array y devuelve un resultado*/}
         </ContainerAddButton>
     )
 }
