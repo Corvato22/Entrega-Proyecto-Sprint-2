@@ -46,7 +46,7 @@ export const AddToCartButton = () => {
 
     return (
         <ContainerAddButton>
-            <button onClick={() => { pushProducts() }}>Agregar {shoppingCart.length} al carrito $ {shoppingCart.reduce((acc, elem) => acc + elem.price, 0)} </button>  El Reduce permite ejecuta una función que permite aplicar operaciones sobre elementos de un array y devuelve un resultado
+            <button onClick={() => { pushProducts() }}>Agregar {shoppingCart.length} al carrito $ {shoppingCart.reduce((acc, elem) => acc + elem.price, 0)} </button> {/*El Reduce permite ejecuta una función que permite aplicar operaciones sobre elementos de un array y devuelve un resultado */}
         </ContainerAddButton>
     )
 }
