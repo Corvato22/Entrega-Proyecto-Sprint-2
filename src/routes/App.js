@@ -9,10 +9,10 @@ import {
 }
     from 'react-router-dom';
     
-import { Home } from '../components/home/Home';
 import { Card } from '../components/home/Card';
 import { Detail } from '../components/detail/Detail';
 import { ShoppingCart } from '../components/shoppingCart/ShoppingCart';
+import { StartApp } from '../components/home/StartApp';
 
 export const App = () => {
     return (
@@ -20,7 +20,7 @@ export const App = () => {
             <div>
                 <Router>
                     <Routes>
-                        <Route exact path="/" element={<Home />} />
+                        <Route exact path="/" element={<StartApp />} />
                         <Route exact path="/card/:endPoint/" element={<Card />} />
                         <Route exact path="/detail/:endPoint/:id" element={<Detail />} />
                         <Route exact path="/shoppingCart" element={<ShoppingCart />} />

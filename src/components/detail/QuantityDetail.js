@@ -56,9 +56,6 @@ export const QuantityDetail = ({ productDetail }) => {     //* Obtiene la data d
 
     let { AddCounter, totalProducts, SubstractCounter, AddToCart, SubstracToCart } = AppContext
 
-    console.log("Objeto selecccionanod", productDetail)
-
-
     const AddProductToCart = () => {
         AddCounter();
         AddToCart(productDetail)

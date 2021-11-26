@@ -87,8 +87,6 @@ export const Combo = ({ endPoint }) => {
 
     function changeCombo(e,data) {                         
         let combo = e.target.checked
-        console.log("Que putas es combo", combo)
-        console.log("Que putas es data", data)
         if (combo !== undefined) {                        //* Verifica si el checkbox no está inderterminado, es una buena practica para prevenir un error (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-indeterminate)
             combo ? AddToCart(data) : SubstracToCart(data)         //* En este operador ternario combo ya vienen como boolean, entonces la declaración del operador es solor "combo"
         }
