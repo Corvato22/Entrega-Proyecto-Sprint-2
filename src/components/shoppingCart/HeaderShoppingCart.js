@@ -9,6 +9,7 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 48px;
 `
 
 const ButtonGoBack = styled.button`

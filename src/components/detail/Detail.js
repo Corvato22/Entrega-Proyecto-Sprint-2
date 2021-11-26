@@ -77,8 +77,6 @@ export const Detail = () => {
         setProductFlavor(data)
     }
 
-    console.log(productDetail)
-    
     function changeFlavor(newProduct) {
         setFlavor(newProduct)
     }
