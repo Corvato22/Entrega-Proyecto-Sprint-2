@@ -10,7 +10,7 @@ const appReducer = (state, action) => {
         case SUBSTRACT_COUNTER_PRODUCT:
             return {
                 ...state,
-                totalProducts: (state.totalProducts - 1) < 1 ? 1 : state.totalProducts - 1
+                totalProducts: (state.totalProducts - 1) < 0 ? 1 : state.totalProducts - 1
             }
         case ADD_TO_CART:
             let newCart = [...state.shoppingCart]               //* Clona el array del estado inicial del carrito para que no se afecte al pushear el objeto agregado.

@@ -68,7 +68,7 @@ export const QuantityDetail = ({ productDetail }) => {     //* Obtiene la data d
 
     let opacityButton
 
-    totalProducts === 1 ? opacityButton = "active" : opacityButton = ""
+    totalProducts === 0 ? opacityButton = "active" : opacityButton = ""
 
     // const [counter, setCounter] = useState(1)            //* Logica anterior del counter
     // const add = () => setCounter(counter + 1)
